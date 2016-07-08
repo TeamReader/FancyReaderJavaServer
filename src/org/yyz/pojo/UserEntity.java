@@ -128,14 +128,14 @@ public class UserEntity {
 
         if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (fontstyleApp != null ? !fontstyleApp.equals(that.fontstyleApp) : that.fontstyleApp != null) return false;
-        if (fontsizeApp != null ? !fontsizeApp.equals(that.fontsizeApp) : that.fontsizeApp != null) return false;
-        if (fontcolorApp != null ? !fontcolorApp.equals(that.fontcolorApp) : that.fontcolorApp != null) return false;
-        if (bgApp != null ? !bgApp.equals(that.bgApp) : that.bgApp != null) return false;
-        if (fontstyleFx != null ? !fontstyleFx.equals(that.fontstyleFx) : that.fontstyleFx != null) return false;
-        if (fontsizeFx != null ? !fontsizeFx.equals(that.fontsizeFx) : that.fontsizeFx != null) return false;
-        if (fontcolorFx != null ? !fontcolorFx.equals(that.fontcolorFx) : that.fontcolorFx != null) return false;
-        if (bgFx != null ? !bgFx.equals(that.bgFx) : that.bgFx != null) return false;
+//        if (fontstyleApp != null ? !fontstyleApp.equals(that.fontstyleApp) : that.fontstyleApp != null) return false;
+//        if (fontsizeApp != null ? !fontsizeApp.equals(that.fontsizeApp) : that.fontsizeApp != null) return false;
+//        if (fontcolorApp != null ? !fontcolorApp.equals(that.fontcolorApp) : that.fontcolorApp != null) return false;
+//        if (bgApp != null ? !bgApp.equals(that.bgApp) : that.bgApp != null) return false;
+//        if (fontstyleFx != null ? !fontstyleFx.equals(that.fontstyleFx) : that.fontstyleFx != null) return false;
+//        if (fontsizeFx != null ? !fontsizeFx.equals(that.fontsizeFx) : that.fontsizeFx != null) return false;
+//        if (fontcolorFx != null ? !fontcolorFx.equals(that.fontcolorFx) : that.fontcolorFx != null) return false;
+//        if (bgFx != null ? !bgFx.equals(that.bgFx) : that.bgFx != null) return false;
 
         return true;
     }

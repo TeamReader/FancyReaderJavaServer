@@ -50,7 +50,6 @@ public class RecordEntity {
 
         RecordEntity that = (RecordEntity) o;
 
-        if (lineNum != that.lineNum) return false;
         if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
         if (bookName != null ? !bookName.equals(that.bookName) : that.bookName != null) return false;
 

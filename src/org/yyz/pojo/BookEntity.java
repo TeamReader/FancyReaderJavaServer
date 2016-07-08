@@ -61,9 +61,9 @@ public class BookEntity {
         BookEntity that = (BookEntity) o;
 
         if (bookName != null ? !bookName.equals(that.bookName) : that.bookName != null) return false;
-        if (icoUrl != null ? !icoUrl.equals(that.icoUrl) : that.icoUrl != null) return false;
-        if (author != null ? !author.equals(that.author) : that.author != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+//        if (icoUrl != null ? !icoUrl.equals(that.icoUrl) : that.icoUrl != null) return false;
+//        if (author != null ? !author.equals(that.author) : that.author != null) return false;
+//        if (description != null ? !description.equals(that.description) : that.description != null) return false;
 
         return true;
     }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <package name="login" extends="struts-default">
+        <action name="logincheck" class="org.yyz.login.LoginAction">
+            <result name="success">/login/success.jsp</result>
+        </action>
+        <action name="getPregerence" class="org.yyz.login.PreferenceAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="userRegist" class="org.yyz.login.RegisterAction">
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+    <package name="books" extends="struts-default">
+        <action name="loadBookList" class="org.yyz.books.BookLoadingAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="deleteBook" class="org.yyz.books.BookDeleteAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="addBook" class="org.yyz.books.BookAddAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="search" class="org.yyz.books.BookSearchAction">
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+
+    <package name="webBook" extends="struts-default">
+        <action name="bookAdding" class="org.yyz.web.BookAddingAction">
+            <result name="success">/webBook/addBook.jsp</result>
+            <result name="input">/webBook/addBook.jsp</result>
+        </action>
+        <action name="bookUpdate" class="org.yyz.web.BookModifyAction">
+            <result name="success">/webBook/modifyResult.jsp</result>
+        </action>
+        <action name="bookSearch" class="org.yyz.web.BookSearchAction">
+            <result name="success">/webBook/searchResult.jsp</result>
+        </action>
+    </package>
+</struts>

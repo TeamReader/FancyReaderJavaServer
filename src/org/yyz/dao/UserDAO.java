@@ -9,4 +9,5 @@ public interface UserDAO {
     public boolean checkUser(UserEntity user);
     public UserEntity getPreference(String userName);
     public boolean regist(UserEntity userEntity);
+    public boolean setPreference(UserEntity userEntity);
 }

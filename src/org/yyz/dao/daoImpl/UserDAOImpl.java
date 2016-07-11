@@ -74,6 +74,23 @@ public class UserDAOImpl implements UserDAO {
     }
 
     /**
+     * set user preference
+     * @param userEntity
+     * @return
+     */
+    public boolean setPreference(UserEntity userEntity){
+        boolean isSuccess = false;
+        Session session = HibernateUtil.getSession();
+        //begin transaction
+        HibernateUtil.begin(session);
+        session.update(userEntity);
+
+        //commit transaction
+        HibernateUtil.commit(session);
+
+        return isSuccess;
+    }
+    /**
      * register a user account
      * @param userEntity
      * @return

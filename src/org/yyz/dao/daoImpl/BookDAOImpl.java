@@ -136,6 +136,35 @@ public class BookDAOImpl implements BookDAO {
     }
 
     /**
+     * fetch user、book record
+     * @param bookName
+     * @param userName
+     * @return
+     */
+    @Override
+    public RecordEntity fetchRecord(String bookName, String userName) {
+        RecordEntity recordEntity = null;
+        boolean flag = null==bookName || bookName.equals("") || null==userName || userName.equals("");
+
+        if(!flag){
+            Session session = HibernateUtil.getSession();
+            //begin transaction
+            HibernateUtil.begin(session);
+
+            String hql = "from RecordEntity as r where r.bookName=:bookName and r.userName=:userName";
+            Query query = session.createQuery(hql);
+            query.setString("userName", userName);
+            query.setString("bookName", bookName);
+
+            recordEntity = (RecordEntity) query.uniqueResult();
+
+            //commit transaction
+            HibernateUtil.commit(session);
+        }
+        return recordEntity;
+    }
+
+    /**
      * search books in server
      *      if bookName equals null or its length is 1,then return all books
      *      else return books whose name contains bookName

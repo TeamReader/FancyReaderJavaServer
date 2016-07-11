@@ -1,6 +1,7 @@
 package org.yyz.dao;
 
 import org.yyz.bean.LoadBooksResultBean;
+import org.yyz.pojo.RecordEntity;
 
 import java.util.List;
 
@@ -13,5 +14,6 @@ public interface BookDAO {
     public boolean addBook(String bookName, String userName);
 
     public boolean recordIndex(String bookName, String userName, int lineNum);
+    public RecordEntity fetchRecord(String bookName, String userName);
     public List<LoadBooksResultBean> searchBooks(String bookName);
 }

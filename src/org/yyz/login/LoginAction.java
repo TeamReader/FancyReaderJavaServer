@@ -2,7 +2,7 @@ package org.yyz.login;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
-import org.yyz.bean.LoginResultBean;
+import org.yyz.bean.BooleanResultBean;
 import org.yyz.dao.UserDAO;
 import org.yyz.dao.daoImpl.UserDAOImpl;
 import org.yyz.pojo.UserEntity;
@@ -13,7 +13,7 @@ import org.yyz.util.JsonUtil;
  * Created by yyz on 2016/7/5.
  */
 public class LoginAction extends ActionSupport {
-    private String user_name,password;
+    private String userName,password;
     private String result;
     private UserDAO userDAOImpl;
 
@@ -23,7 +23,7 @@ public class LoginAction extends ActionSupport {
 //        String data = JsonUtil.EntityToString(result);
         UserEntity userEntity = new UserEntity();
         userEntity.setPassword(password);
-        userEntity.setUserName(user_name);
+        userEntity.setUserName(userName);
         userDAOImpl = new UserDAOImpl();
         boolean isExist = userDAOImpl.checkUser(userEntity);
         if(isExist){
@@ -32,19 +32,18 @@ public class LoginAction extends ActionSupport {
             result = "false";
         }
 
-        LoginResultBean resultBean = new LoginResultBean();
+        BooleanResultBean resultBean = new BooleanResultBean();
         resultBean.setResult(result);
         String data = JsonUtil.EntityToString(resultBean);
         ServletActionContext.getRequest().setAttribute("data",data);
+//        ServletActionContext.getRequest().setAttribute("result",resultBean);
 
-        user_name = null;
-        password = null;
         return SUCCESS;
     }
 
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setPassword(String password) {
@@ -55,9 +54,9 @@ public class LoginAction extends ActionSupport {
         this.result = result;
     }
 
-    public String getUser_name() {
+    public String getUserName() {
 
-        return user_name;
+        return userName;
     }
 
     public String getPassword() {

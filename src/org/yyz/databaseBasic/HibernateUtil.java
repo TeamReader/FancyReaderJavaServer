@@ -110,8 +110,9 @@ public class HibernateUtil {
      * @param session
      */
     public static void begin(Session session){
-        if(null != session)
+        if(null != session){
             session.getTransaction().begin();
+        }
     }
 
     /**
@@ -122,6 +123,8 @@ public class HibernateUtil {
         if(null != session){
             session.flush();
             session.getTransaction().commit();
+            session.clear();
+            session.close();
         }
     }
 }

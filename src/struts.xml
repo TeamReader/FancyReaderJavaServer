@@ -10,10 +10,13 @@
         <action name="logincheck" class="org.yyz.login.LoginAction">
             <result name="success">/login/success.jsp</result>
         </action>
-        <action name="getPregerence" class="org.yyz.login.PreferenceAction">
+        <action name="getPreference" class="org.yyz.login.PreferenceAction">
             <result name="success">/success.jsp</result>
         </action>
         <action name="userRegist" class="org.yyz.login.RegisterAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="pushPreference" class="org.yyz.login.PushPreferenceAction">
             <result name="success">/success.jsp</result>
         </action>
     </package>
@@ -28,6 +31,12 @@
             <result name="success">/success.jsp</result>
         </action>
         <action name="search" class="org.yyz.books.BookSearchAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="getRecordIndex" class="org.yyz.books.FetchBookIndexAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="recordIndex" class="org.yyz.books.IndexRecordAction">
             <result name="success">/success.jsp</result>
         </action>
     </package>

@@ -6,6 +6,8 @@
 
 <struts>
     <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <!--配置允许直接访问资源文件夹-->
+    <constant name="struts.action.excludePattern" value="/resources/*"/>
     <package name="login" extends="struts-default">
         <action name="logincheck" class="org.yyz.login.LoginAction">
             <result name="success">/login/success.jsp</result>
@@ -39,6 +41,16 @@
         <action name="recordIndex" class="org.yyz.books.IndexRecordAction">
             <result name="success">/success.jsp</result>
         </action>
+
+        <!--配置下载书籍的action-->
+        <action name="downloadTxt" class="org.yyz.books.BookDownloadAction">
+            <result type="stream" name="success">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">targetFile</param><!--必须与get的输出流名称相同-->
+                <param name="bufferSize">1024</param>
+
+            </result>
+        </action>
     </package>
 
     <package name="webBook" extends="struts-default">
@@ -53,4 +65,5 @@
             <result name="success">/webBook/searchResult.jsp</result>
         </action>
     </package>
+
 </struts>

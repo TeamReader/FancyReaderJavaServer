@@ -96,4 +96,47 @@ public class PushPreferenceAction extends ActionSupport {
     public String getBgFx() {
         return bgFx;
     }
+
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFontstyleApp(String fontstyleApp) {
+        this.fontstyleApp = fontstyleApp;
+    }
+
+    public void setFontsizeApp(String fontsizeApp) {
+        this.fontsizeApp = fontsizeApp;
+    }
+
+    public void setFontcolorApp(String fontcolorApp) {
+        this.fontcolorApp = fontcolorApp;
+    }
+
+    public void setBgApp(String bgApp) {
+        this.bgApp = bgApp;
+    }
+
+    public void setFontstyleFx(String fontstyleFx) {
+        this.fontstyleFx = fontstyleFx;
+    }
+
+    public void setFontsizeFx(String fontsizeFx) {
+        this.fontsizeFx = fontsizeFx;
+    }
+
+    public void setFontcolorFx(String fontcolorFx) {
+        this.fontcolorFx = fontcolorFx;
+    }
+
+    public void setBgFx(String bgFx) {
+        this.bgFx = bgFx;
+    }
+
+
 }

@@ -13,6 +13,14 @@ public class BookEntity {
     private String author;
     private String description;
 
+    public BookEntity(String bookName, String icoUrl, String author, String description) {
+        this.bookName = bookName;
+        this.icoUrl = icoUrl;
+        this.author = author;
+        this.description = description;
+    }
+    public BookEntity(){}
+
     @Id
     @Column(name = "book_name")
     public String getBookName() {

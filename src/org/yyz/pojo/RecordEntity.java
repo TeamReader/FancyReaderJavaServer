@@ -63,4 +63,6 @@ public class RecordEntity {
         result = 31 * result + lineNum;
         return result;
     }
+
+
 }

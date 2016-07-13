@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.yyz.bean.LoadBooksResultBean;
 import org.yyz.dao.BookDAO;
 import org.yyz.databaseBasic.HibernateUtil;
+import org.yyz.pojo.BookEntity;
 import org.yyz.pojo.RecordEntity;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import java.util.List;
 public class BookDAOImpl implements BookDAO {
     /**
      * load personal books list
-     * @param userName
-     * @return
+     * @param userName book's name
+     * @return list of @LoadBooksResultBean
      */
     @Override
     public List<LoadBooksResultBean> loadBooks(String userName) {
@@ -29,11 +30,15 @@ public class BookDAOImpl implements BookDAO {
             //begin transaction
             HibernateUtil.begin(session);
 
-            String hsql = "select r.bookName,b.icoUrl,b.author,b.description from RecordEntity as r inner join BookEntity as b where r.userName=:username";
+            String hsql = "select new BookEntity(b.bookName,b.icoUrl,b.author,b.description) from RecordEntity as r inner join BookEntity as b where r.userName=:username";
             Query query = session.createQuery(hsql);
             query.setString("username", userName);
-            Iterator iterator = query.iterate();
-            resultToList(iterator, list);
+//            Iterator iterator = query.iterate();
+//            resultToList(iterator, list);
+
+
+            List<BookEntity> booksList = query.list();
+            list = bookListToLoadBooksList(booksList);
 
             //commit transaction
             HibernateUtil.commit(session);
@@ -43,9 +48,9 @@ public class BookDAOImpl implements BookDAO {
 
     /**
      * delete book from personal book list
-     * @param bookName
-     * @param userName
-     * @return
+     * @param bookName book's name
+     * @param userName user's name
+     * @return true:delete book from user's book list successfully,other wise false
      */
     @Override
     public boolean deleteBook(String bookName, String userName) {
@@ -74,9 +79,9 @@ public class BookDAOImpl implements BookDAO {
 
     /**
      * add book to personal book list
-     * @param bookName
-     * @param userName
-     * @return
+     * @param bookName book's name
+     * @param userName user's name
+     * @return true:add book ot user's book list successfully,other wise false
      */
     @Override
     public boolean addBook(String bookName, String userName) {
@@ -105,10 +110,10 @@ public class BookDAOImpl implements BookDAO {
 
     /**
      * record the line num of (userName,bookName) to remember the position of reading
-     * @param bookName
-     * @param userName
-     * @param lineNum
-     * @return
+     * @param bookName book's name
+     * @param userName user's name
+     * @param lineNum read position
+     * @return whether record success
      */
     @Override
     public boolean recordIndex(String bookName, String userName, int lineNum) {
@@ -137,9 +142,9 @@ public class BookDAOImpl implements BookDAO {
 
     /**
      * fetch user、book record
-     * @param bookName
-     * @param userName
-     * @return
+     * @param bookName book's name
+     * @param userName user's name
+     * @return the record result RecordEntity
      */
     @Override
     public RecordEntity fetchRecord(String bookName, String userName) {
@@ -180,18 +185,22 @@ public class BookDAOImpl implements BookDAO {
 
         String hql = null;
         if(null == bookName || bookName.equals("")){
-            hql = "select b.bookName,b.icoUrl,b.author,b.description from BookEntity as b";
+            hql = "from BookEntity as b";
             Query query = session.createQuery(hql);
-            Iterator iterator = query.iterate();
-
-            resultToList(iterator, list);
+//            Iterator iterator = query.iterate();
+//
+//            resultToList(iterator, list);
+            List<BookEntity> bookList = query.list();
+            list = bookListToLoadBooksList(bookList);
         }else{
-            hql = "select b.bookName,b.icoUrl,b.author,b.description from BookEntity as b where b.bookName like :bookName";
+            hql = "from BookEntity as b where b.bookName like :bookName";
             Query query = session.createQuery(hql);
             query.setString("bookName","%"+bookName+"%");
-            Iterator iterator = query.iterate();
-
-            resultToList(iterator, list);
+//            Iterator iterator = query.iterate();
+//
+//            resultToList(iterator, list);
+            List<BookEntity> bookList = query.list();
+            list = bookListToLoadBooksList(bookList);
         }
         //commit transaction
         HibernateUtil.commit(session);
@@ -200,7 +209,33 @@ public class BookDAOImpl implements BookDAO {
     }
 
     /**
+     *
+     * @param @BookEntity list to @LoadBooksResultBean list
+     * @return
+     */
+    private List<LoadBooksResultBean> bookListToLoadBooksList(List<BookEntity> list) {
+        if(null == list){
+            return null;
+        }
+
+        List<LoadBooksResultBean> resultList = new ArrayList<LoadBooksResultBean>();
+        for(BookEntity b : list){
+            LoadBooksResultBean bean = new LoadBooksResultBean();
+            bean.setBookName(b.getBookName());
+            bean.setIcoUrl("/resource/icons/"+b.getIcoUrl());
+            bean.setAuthor(b.getAuthor());
+            bean.setDescription(b.getDescription());
+            bean.setBookUrl("/resource/books/"+b.getBookName());
+            resultList.add(bean);
+        }
+
+        return resultList;
+    }
+
+    /**
+     * useless now!!
      * translate query result to List<LoadBooksResultBean> list
+     *
      * @param iterator
      * @param list
      */

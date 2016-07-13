@@ -26,9 +26,11 @@ public class HibernateUtil {
     private static Configuration configuration = new Configuration();
     private static ServiceRegistry serviceRegistry;
 
+    private static final String configFilePath = "org/yyz/pojo/hibernate.cfg.xml";
+
     static {
         try {
-            configuration.configure("org/yyz/pojo/hibernate.cfg.xml");
+            configuration.configure(configFilePath);
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Exception e) {
@@ -67,7 +69,7 @@ public class HibernateUtil {
      */
     public static void rebuildSessionFactory() {
         try {
-            configuration.configure();
+            configuration.configure(configFilePath);
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Exception e) {
@@ -122,9 +124,10 @@ public class HibernateUtil {
     public static void commit(Session session){
         if(null != session){
             session.flush();
-            session.getTransaction().commit();
             session.clear();
-            session.close();
+            session.getTransaction().commit();
+
+            //session.close();
         }
     }
 }

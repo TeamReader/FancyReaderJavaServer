@@ -30,7 +30,7 @@ public class BookDAOImpl implements BookDAO {
             //begin transaction
             HibernateUtil.begin(session);
 
-            String hsql = "select new BookEntity(b.bookName,b.icoUrl,b.author,b.description) from RecordEntity as r inner join BookEntity as b where r.userName=:username";
+            String hsql = "select new org.yyz.pojo.BookEntity(b.bookName,b.icoUrl,b.author,b.description) from RecordEntity r,BookEntity b where r.bookName=b.bookName and r.userName=:username";
             Query query = session.createQuery(hsql);
             query.setString("username", userName);
 //            Iterator iterator = query.iterate();
@@ -131,7 +131,7 @@ public class BookDAOImpl implements BookDAO {
         recordEntity.setBookName(bookName);
         recordEntity.setLineNum(lineNum);
 
-        session.save(recordEntity);
+        session.update(recordEntity);
         isSuccess = true;
 
         //commit transaction

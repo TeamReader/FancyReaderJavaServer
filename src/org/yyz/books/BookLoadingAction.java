@@ -15,7 +15,7 @@ import java.util.List;
  * load personal books list
  */
 public class BookLoadingAction extends ActionSupport {
-    private String user_name;
+    private String userName;
     private BookDAO bookDAOImpl;
 
     /**
@@ -27,24 +27,24 @@ public class BookLoadingAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         bookDAOImpl = new BookDAOImpl();
-        List<LoadBooksResultBean> list = bookDAOImpl.loadBooks(user_name);
+        List<LoadBooksResultBean> list = bookDAOImpl.loadBooks(userName);
 
         //output type:json
         String data = JsonUtil.EntityToString(list);
         ServletActionContext.getRequest().setAttribute("data",data);
         //clear data
-        user_name = null;
+        userName = null;
         return SUCCESS;
     }
 
     //getter and setter
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUser_name() {
+    public String getUserName() {
 
-        return user_name;
+        return userName;
     }
 
 

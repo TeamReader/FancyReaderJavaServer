@@ -65,4 +65,12 @@ public class RecordEntity {
     }
 
 
+    public RecordEntity(String userName, String bookName, int lineNum) {
+        this.userName = userName;
+        this.bookName = bookName;
+        this.lineNum = lineNum;
+    }
+
+    public RecordEntity() {
+    }
 }

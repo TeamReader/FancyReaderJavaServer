@@ -87,7 +87,7 @@ public class UserDAOImpl implements UserDAO {
 
         //commit transaction
         HibernateUtil.commit(session);
-
+        isSuccess = true;
         return isSuccess;
     }
     /**

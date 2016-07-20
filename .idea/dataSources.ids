@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - txtreader" uuid="b0b26805-0481-44ea-8cd4-0d3e941d60a3">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="txtreader"/>
+      <table id="2" parent="1" name="book"/>
+      <table id="3" parent="1" name="record"/>
+      <table id="4" parent="1" name="user"/>
+      <column id="5" parent="2" name="book_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="6" parent="2" name="ico_url">
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="7" parent="2" name="author">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="8" parent="2" name="description">
+        <data-type>varchar(500)</data-type>
+      </column>
+      <key id="9" parent="2" name="PRIMARY">
+        <columns>book_name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="10" parent="3" name="user_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="11" parent="3" name="book_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="12" parent="3" name="line_num">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="13" parent="3" name="PRIMARY">
+        <columns>user_name
+book_name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="14" parent="4" name="user_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="15" parent="4" name="password">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="16" parent="4" name="fontstyle_app">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="17" parent="4" name="fontsize_app">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="18" parent="4" name="fontcolor_app">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="19" parent="4" name="bg_app">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="20" parent="4" name="fontstyle_fx">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="21" parent="4" name="fontsize_fx">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="22" parent="4" name="fontcolor_fx">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="23" parent="4" name="bg_fx">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="24" parent="4" name="PRIMARY">
+        <columns>user_name</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
   </data-source>
 </component>

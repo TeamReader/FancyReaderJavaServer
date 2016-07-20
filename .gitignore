@@ -1,2 +1,4 @@
 *.class
 out/*
+web/resource/books/*
+web/resource/icons/*

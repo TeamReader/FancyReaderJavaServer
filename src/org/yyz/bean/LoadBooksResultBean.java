@@ -5,7 +5,7 @@ package org.yyz.bean;
  */
 public class LoadBooksResultBean {
     private String bookName,icoUrl,bookUrl,author,description;
-
+//getter and setter
     public void setBookName(String bookName) {
         this.bookName = bookName;
     }
@@ -47,4 +47,14 @@ public class LoadBooksResultBean {
 
         return bookName;
     }
+//construtor
+    public LoadBooksResultBean(String bookName, String icoUrl, String bookUrl, String author, String description) {
+        this.bookName = bookName;
+        this.icoUrl = icoUrl;
+        this.bookUrl = bookUrl;
+        this.author = author;
+        this.description = description;
+    }
+
+    public LoadBooksResultBean(){}
 }

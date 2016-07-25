@@ -14,33 +14,11 @@
 <body>
     <div align="center">
         <h2>搜索书籍</h2>
-        <form method="post">
+        <form method="post" action="bookSearch.action">
             书名：<input type="text" name="bookName"/>
             <input type="submit" value="搜索"/>
         </form>
     </div>
-    <div align="center" style="width:100%;">
-        <h3>搜索结果</h3>
-        <table>
-            <tr>
-                <th>书名</th>
-                <th>作者</th>
-                <th>icoUrl</th>
-                <th>简介</th>
-                <th>操作</th>
 
-            </tr>
-            <s:iterator value="#request.data" var="book">
-                <tr>
-                    <td><s:property value="#book.bookName"/> </td>
-                    <td><s:property value="#book.author"/></td>
-                    <td><s:property value="#book.icoUrl"/></td>
-                    <td><s:property value="#book.description"/></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </s:iterator>
-        </table>
-    </div>
 </body>
 </html>

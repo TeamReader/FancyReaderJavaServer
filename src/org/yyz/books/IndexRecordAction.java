@@ -31,7 +31,7 @@ public class IndexRecordAction extends ActionSupport {
         //clear data
         bookName = null;
         userName = null;
-        lineNum = -1;
+        lineNum = 0;
 
         return SUCCESS;
     }
